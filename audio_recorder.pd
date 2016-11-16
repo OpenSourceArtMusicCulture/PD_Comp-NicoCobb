@@ -1,0 +1,37 @@
+#N canvas 794 402 751 304 10;
+#X msg 546 205 open \$1;
+#X obj 546 143 bng 15 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 546 174 savepanel;
+#X msg 172 109 start;
+#X msg 72 108 stop;
+#X text 376 139 Create Audio File \; Turn DSP on;
+#X text 574 143 Create Another File;
+#X obj 274 266 writesf~ 2;
+#X text 143 41 Start Recording;
+#X text 344 267 <- write stereo file;
+#X text 40 40 Stop Recording;
+#X obj 271 67 inlet~;
+#X obj 331 67 inlet~;
+#X text 261 45 audio stereo input;
+#X obj 172 65 inlet;
+#X obj 172 88 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 72 64 inlet;
+#X obj 72 87 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 546 108 inlet;
+#X msg 357 177 open ./audio/Test.wav \; pd dsp 1;
+#X connect 0 0 7 0;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 3 0 7 0;
+#X connect 4 0 7 0;
+#X connect 11 0 7 0;
+#X connect 12 0 7 1;
+#X connect 14 0 15 0;
+#X connect 15 0 3 0;
+#X connect 16 0 17 0;
+#X connect 17 0 4 0;
+#X connect 18 0 1 0;
+#X connect 19 0 7 0;

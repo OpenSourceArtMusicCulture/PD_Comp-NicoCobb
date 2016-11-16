@@ -1,0 +1,154 @@
+#N canvas 761 0 766 772 10;
+#X text 502 19 start;
+#N canvas 48 41 734 591 YesSelector 1;
+#X obj 76 36 inlet;
+#X obj 244 496 outlet;
+#X text 371 10 1 = A 2 = B 3 = C 4 = D 5 = E 6 = F# 7 = G;
+#X text 26 10 will pass in a number corresponding to a letter:;
+#X obj 101 154 select 1 2 3 4 5 6 7;
+#X floatatom 379 219 5 0 0 0 - - -, f 5;
+#X obj 147 286 symbol;
+#X symbolatom 147 333 10 0 0 0 - - -, f 10;
+#X floatatom 379 317 5 0 0 0 - - -, f 5;
+#X obj 379 259 + 1;
+#X obj 379 177 random 20;
+#X obj 76 78 t float b b;
+#X msg 480 143 .wav;
+#X obj 480 323 symbol;
+#X obj 246 376 pack s 0 s;
+#X msg 26 218 yesA;
+#X msg 73 219 yesB;
+#X msg 119 220 yesC;
+#X msg 164 219 yesD;
+#X msg 209 220 yesE;
+#X msg 256 221 yesF;
+#X msg 306 220 yesG;
+#X msg 244 417 set \$1/\$2\$3;
+#X connect 0 0 11 0;
+#X connect 4 0 15 0;
+#X connect 4 1 16 0;
+#X connect 4 2 17 0;
+#X connect 4 3 18 0;
+#X connect 4 4 19 0;
+#X connect 4 5 20 0;
+#X connect 4 6 21 0;
+#X connect 5 0 9 0;
+#X connect 6 0 7 0;
+#X connect 7 0 14 0;
+#X connect 8 0 14 1;
+#X connect 9 0 8 0;
+#X connect 10 0 5 0;
+#X connect 11 0 4 0;
+#X connect 11 1 10 0;
+#X connect 11 2 12 0;
+#X connect 12 0 13 0;
+#X connect 13 0 14 2;
+#X connect 14 0 22 0;
+#X connect 15 0 6 0;
+#X connect 16 0 6 0;
+#X connect 17 0 6 0;
+#X connect 18 0 6 0;
+#X connect 19 0 6 0;
+#X connect 20 0 6 0;
+#X connect 21 0 6 0;
+#X connect 22 0 1 0;
+#X restore 368 307 pd YesSelector;
+#X obj 286 160 f;
+#X obj 339 161 + 1;
+#X msg 36 283 read allNotes.txt;
+#X obj 366 269 array get allNotes;
+#X floatatom 321 202 5 0 0 0 - - -, f 5;
+#X obj 218 250 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 319 127 0;
+#X obj 150 170 key;
+#X obj 152 208 select 32;
+#X obj 377 496 readsf~;
+#X obj 399 578 dac~;
+#X obj 592 157 readsf~;
+#X obj 587 274 dac~;
+#X obj 543 62 t f b;
+#X obj 509 36 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X msg 307 467 1;
+#X msg 385 369 yesG/20.wav;
+#X msg 378 440 open \$1;
+#X obj 384 412 symbol;
+#X obj 261 245 t b b;
+#X obj 557 491 audio_recorder;
+#X obj 544 429 bng 15 250 50 0 empty empty empty 17 7 0 10 -258113
+-1 -1;
+#X obj 572 401 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 685 391 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 593 90 open TwentyTwo.wav;
+#X obj 76 384 array define -k allNotes 1091;
+#A 0 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 2 1 2 2 1 7 1 7 2 2 2 2 2 4 2
+2 2 2 1 2 1 2 2 2 2 2 1 2 1 2 1 7 1 7 7 6 5 4 7 7 6 6 5 5 4 4 2 2 2
+3 2 7 7 6 6 5 5 4 4 6 7 7 6 5 4 7 7 6 6 5 5 4 4 2 2 2 3 2 1 7 1 7 2
+2 1 2 7 7 7 7 7 7 4 2 1 1 1 1 2 1 7 5 7 1 1 1 1 7 3 2 2 2 1 7 7 7 7
+7 4 7 4 2 1 1 1 1 2 1 7 5 7 1 1 2 1 7 5 7 7 4 2 1 4 2 7 4 2 1 4 2 7
+4 2 1 4 2 1 7 5 4 2 2 2 2 2 4 2 2 2 2 1 2 1 2 2 2 1 2 1 2 1 7 1 7 2
+2 2 2 2 4 2 2 2 1 2 2 2 2 1 2 2 7 7 4 1 7 7 6 5 4 7 7 6 6 5 5 4 4 2
+2 2 3 2 7 7 6 6 5 5 4 4 6 7 7 1 2 7 7 6 6 5 5 4 4 2 2 2 3 2 1 7 1 7
+2 2 1 2 7 7 7 7 7 7 4 2 1 1 1 1 2 1 7 5 7 1 1 1 1 7 3 2 2 2 1 7 7 7
+7 7 4 7 2 1 1 1 1 2 1 7 5 7 1 1 2 1 7 5 7 7 4 2 1 4 2 7 4 2 1 4 2 1
+7 5 4 7 4 2 1 4 2 7 4 2 1 4 2 1 7 5 4 7 7 7 7 7 1 7 7 7 5 1 7 7 7 7
+7 7 1 7 7 7 5 1 2 1 7 7 7 7 7 1 7 7 7 5 1 7 7 7 5 1 7 7 7 5 7 4 2 6
+7 6 7 2 4 2 2 1 2 7 7 7 7 7 7 4 2 1 1 1 1 2 1 7 5 7 1 1 1 1 7 3 2 2
+2 1 7 7 7 7 7 4 7 4 2 1 1 1 1 2 1 7 5 7 1 1 2 1 7 5 7 7 4 2 1 4 2 7
+4 2 1 4 2 1 7 5 4 7 4 2 1 4 2 7 4 2 1 4 2 1 7 5 4 7 7 7 7 7 1 7 7 7
+5 1 7 7 7 7 7 7 1 7 7 7 5 1 2 1 7 7 7 7 7 1 7 7 7 5 1 7 7 7 5 1 7 7
+7 5 7 4 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2;
+#A 1000 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2;
+#X obj 587 186 *~ 0.3;
+#X obj 394 529 *~ 1.5;
+#X connect 1 0 18 0;
+#X connect 2 0 3 0;
+#X connect 2 0 6 0;
+#X connect 3 0 2 1;
+#X connect 4 0 27 0;
+#X connect 5 0 1 0;
+#X connect 6 0 5 0;
+#X connect 7 0 21 0;
+#X connect 8 0 2 1;
+#X connect 9 0 10 0;
+#X connect 10 0 7 0;
+#X connect 11 0 29 0;
+#X connect 13 0 28 0;
+#X connect 15 0 13 0;
+#X connect 15 1 26 0;
+#X connect 16 0 15 0;
+#X connect 17 0 11 0;
+#X connect 18 0 20 0;
+#X connect 19 0 11 0;
+#X connect 19 0 17 0;
+#X connect 20 0 19 0;
+#X connect 21 0 18 0;
+#X connect 21 1 2 0;
+#X connect 23 0 22 0;
+#X connect 24 0 22 1;
+#X connect 25 0 22 4;
+#X connect 26 0 13 0;
+#X connect 28 0 14 0;
+#X connect 28 0 14 1;
+#X connect 28 0 22 2;
+#X connect 29 0 12 0;
+#X connect 29 0 12 1;
+#X connect 29 0 22 3;
